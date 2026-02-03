@@ -30,8 +30,8 @@ echo "|${CYAN} Retrieving list of found PSUs/BBUs...${NC} (or_check)"
 echo "|---------------------------------------------|"
 echo "$or_check_output"
 echo "|---------------------------------------------|"
-psu_found=$(echo "$or_check_output" | grep "PSU" | wc -l)
-bbu_found=$(echo "$or_check_output" | grep "BBU" | wc -l)
+psu_found="$(grep -c "PSU" <<<"$or_check_output")"
+bbu_found="$(grep -c "BBU" <<<"$or_check_output")"
 if [[ $(wc -l <<<"$serf_get_output") -eq 4 ]]; then
     expected_psu=12
     expected_bbu=12
